@@ -43,5 +43,7 @@ class CustomTheme {
   Color preventiveMedicine = const Color(0xffD83C3C);
   Color surgery = const Color(0xffFFA24D);
 
+  Color backgroundColor = const Color(0xff101827);
+
   setTheme() {}
 }

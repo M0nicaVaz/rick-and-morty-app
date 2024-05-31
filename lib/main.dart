@@ -25,19 +25,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Rick and Morty',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: CustomTheme().brand300),
+        scaffoldBackgroundColor: CustomTheme().backgroundColor,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: CustomTheme().brand300,
+        ),
         useMaterial3: true,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-            title: const Text("Rick and Morty App"),
-            backgroundColor: CustomTheme().brand400,
-            titleTextStyle: TextStyle(
-              fontSize: 20,
-              color: CustomTheme().white000,
-            )),
-        drawer: const Drawer(),
-        body: const ListCharatersPage(),
+      home: const Scaffold(
+        body: ListCharatersPage(),
       ),
     );
   }

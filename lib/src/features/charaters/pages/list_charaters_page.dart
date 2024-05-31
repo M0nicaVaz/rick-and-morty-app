@@ -27,11 +27,15 @@ class _ListCharatersPageState extends State<ListCharatersPage> {
                   .map((e) => CharacterCard(character: e))
             ]),
           ),
+          const SizedBox(
+            height: 24,
+          ),
           ElevatedButton(
-              onPressed: () {
-                listCharatersBloc.loadMore();
-              },
-              child: const Text('Carregar mais'))
+            onPressed: () {
+              listCharatersBloc.loadMore();
+            },
+            child: const Text('Carregar mais'),
+          )
         ],
       ),
     );
