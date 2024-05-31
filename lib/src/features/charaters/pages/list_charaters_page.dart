@@ -18,14 +18,22 @@ class _ListCharatersPageState extends State<ListCharatersPage> {
         Provider.of<ListCharatersBloc>(context);
 
     return SingleChildScrollView(
-      child: Column(children: [
-        ...listCharatersBloc.characters.map((e) => CharacterCard(character: e)),
-        ElevatedButton(
-            onPressed: () {
-              listCharatersBloc.loadMore();
-            },
-            child: const Text('Carregar mais'))
-      ]),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Center(
+            child: Wrap(children: [
+              ...listCharatersBloc.characters
+                  .map((e) => CharacterCard(character: e))
+            ]),
+          ),
+          ElevatedButton(
+              onPressed: () {
+                listCharatersBloc.loadMore();
+              },
+              child: const Text('Carregar mais'))
+        ],
+      ),
     );
   }
 }
