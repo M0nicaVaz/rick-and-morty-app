@@ -5,24 +5,19 @@ class CharactersGateway {
   final API http;
   CharactersGateway(this.http);
 
-  Future<List<Character>?> getCharacters() async {
-    final response = await http.get('/character');
-    if (response.statusCode == 200) {
-      final data = response.data['results'] as List;
-      return data
-          .map((e) => Character(
-                gender: e["gender"],
-                id: e["id"],
-                image: e["image"],
-                location: e["location"],
-                name: e["name"],
-                origin: e["origin"],
-                species: e["species"],
-                status: e["status"],
-              ))
-          .toList();
-    }
+  Future<List<Character>?> getCharacters(int page) async {
+    final response = await http.get('character/?page=$page');
+    final data = response['results'] as List;
 
-    return null;
+    return data
+        .map((e) => Character(
+              id: e["id"],
+              name: e["name"],
+              status: e["status"],
+              species: e["species"],
+              gender: e["gender"],
+              image: e["image"],
+            ))
+        .toList();
   }
 }
