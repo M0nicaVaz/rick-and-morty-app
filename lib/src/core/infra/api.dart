@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
-class Api {
+class API {
   static final String baseUrl = dotenv.env['RICK_AND_MORTY_API_URL'] ?? "";
 
   get(String path) async {
