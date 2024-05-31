@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/bloc/list_charaters_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/pages/list_charaters_page.dart';
 
 main() async {
-  await dotenv.load(fileName: ".env");
-  runApp(const MyApp());
+  await dotenv.load();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ListCharatersBloc()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +27,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Scaffold(),
+      home: Scaffold(
+        appBar: AppBar(title: const Text("Rick and Morty App")),
+        drawer: const Drawer(),
+        body: const ListCharatersPage(),
+      ),
     );
   }
 }
