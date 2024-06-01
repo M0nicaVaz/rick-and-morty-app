@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import 'package:rick_and_morty_flutter/src/features/charaters/bloc/list_charaters_bloc.dart';
-import 'package:rick_and_morty_flutter/src/features/charaters/widget/character_card.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/widget/characters_section.dart';
 
 class ListCharatersPage extends StatefulWidget {
   const ListCharatersPage({super.key});
@@ -22,10 +21,7 @@ class _ListCharatersPageState extends State<ListCharatersPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Center(
-            child: Wrap(children: [
-              ...listCharatersBloc.characters
-                  .map((e) => CharacterCard(character: e))
-            ]),
+            child: CharactersSection(listCharatersBloc: listCharatersBloc),
           ),
           const SizedBox(
             height: 24,
