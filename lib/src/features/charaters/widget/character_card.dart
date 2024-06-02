@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/widget/character_image.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/widget/character_name.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/widget/chracter_details.dart';
 
 class CharacterCard extends StatelessWidget {
   final Character character;
@@ -30,59 +32,13 @@ class CharacterCard extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 16, right: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(4),
-                  topRight: Radius.circular(4),
-                ),
-                child: Image.network(
-                  character.image,
-                  height: 120,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 4.0),
-                child: Text(
-                  character.name,
-                  style: GoogleFonts.creepster(
-                      textStyle: const TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.limeAccent,
-                  )),
-                  softWrap: true,
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600),
-                      children: [
-                        TextSpan(text: character.status),
-                        TextSpan(
-                          text: " | ",
-                          style: TextStyle(color: Colors.teal),
-                        ),
-                        TextSpan(text: character.species),
-                        TextSpan(
-                          text: " | ",
-                          style: TextStyle(color: Colors.teal),
-                        ),
-                        TextSpan(text: character.gender),
-                      ],
-                    ),
-                  )),
+              CharacterImage(character: character),
+              CharacterName(character: character),
+              CharacterDetails(character: character, context: context),
             ],
           ),
         ),

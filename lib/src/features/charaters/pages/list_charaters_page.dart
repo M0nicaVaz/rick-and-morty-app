@@ -20,6 +20,12 @@ class _ListCharatersPageState extends State<ListCharatersPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          TextField(
+            onChanged: (value) => listCharatersBloc.search(value),
+          ),
+          SizedBox(
+            height: 80,
+          ),
           Center(
             child: CharactersSection(listCharatersBloc: listCharatersBloc),
           ),

@@ -5,7 +5,7 @@ class GetCharactersUseCase {
 
   GetCharactersUseCase(this._charactersGateway);
 
-  Future execute(int page) async {
-    return await _charactersGateway.getCharacters(page);
+  Future execute(int page, String name) async {
+    return await _charactersGateway.getCharacters(page, name);
   }
 }

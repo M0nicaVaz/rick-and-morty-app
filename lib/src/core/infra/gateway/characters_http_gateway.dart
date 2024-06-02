@@ -5,8 +5,8 @@ class CharactersGateway {
   final API http;
   CharactersGateway(this.http);
 
-  Future<List<Character>?> getCharacters(int page) async {
-    final response = await http.get('character/?page=$page');
+  Future<List<Character>?> getCharacters(int page, String name) async {
+    final response = await http.get('character/?page=$page&name=$name');
     final data = response['results'] as List;
 
     return data

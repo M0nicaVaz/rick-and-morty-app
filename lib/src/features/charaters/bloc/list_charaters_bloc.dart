@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_flutter/src/core/container_registry.dart';
 import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
+import 'package:rick_and_morty_flutter/src/utils/debouncer.dart';
 
 class ListCharatersBloc extends ChangeNotifier {
+  final _debouncer = Debouncer(milliseconds: 500);
   List<Character> characters = [];
+  String name = "";
   int page = 1;
 
   ListCharatersBloc() {
@@ -11,9 +14,17 @@ class ListCharatersBloc extends ChangeNotifier {
   }
 
   _getCharacters() async {
-    final response = await ContainerRegistry.getCharactersUseCase.execute(page);
+    final response =
+        await ContainerRegistry.getCharactersUseCase.execute(page, name);
     characters = response;
     notifyListeners();
+  }
+
+  search(String value) {
+    _debouncer.run(() {
+      name = value;
+      _getCharacters();
+    });
   }
 
   loadMore() {
