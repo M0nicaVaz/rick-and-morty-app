@@ -44,6 +44,4 @@ class ColorsConfig {
   Color surgery = const Color(0xffFFA24D);
 
   Color backgroundColor = const Color(0xff101827);
-
-  setTheme() {}
 }
