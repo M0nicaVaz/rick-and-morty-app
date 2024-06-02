@@ -12,7 +12,7 @@ class ListCharatersBloc extends ChangeNotifier {
 
   _getCharacters() async {
     final response = await ContainerRegistry.getCharactersUseCase.execute(page);
-    characters.addAll(response);
+    characters = response;
     notifyListeners();
   }
 

@@ -60,49 +60,29 @@ class CharacterCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      character.status,
+                  padding: const EdgeInsets.all(4.0),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
                       style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
+                          fontSize: 14,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600),
+                      children: [
+                        TextSpan(text: character.status),
+                        TextSpan(
+                          text: " | ",
+                          style: TextStyle(color: Colors.teal),
+                        ),
+                        TextSpan(text: character.species),
+                        TextSpan(
+                          text: " | ",
+                          style: TextStyle(color: Colors.teal),
+                        ),
+                        TextSpan(text: character.gender),
+                      ],
                     ),
-                    const Text(
-                      "|",
-                      style: TextStyle(
-                        color: Colors.cyanAccent,
-                      ),
-                    ),
-                    Text(
-                      character.species,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const Text(
-                      "|",
-                      style: TextStyle(
-                        color: Colors.cyanAccent,
-                      ),
-                    ),
-                    Text(
-                      character.gender,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  )),
             ],
           ),
         ),

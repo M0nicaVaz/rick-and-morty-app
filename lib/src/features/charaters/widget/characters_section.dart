@@ -30,10 +30,14 @@ class CharactersSection extends StatelessWidget {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(24.0),
-              child: Wrap(spacing: 16.0, runSpacing: 16.0, children: [
-                ...listCharatersBloc.characters
-                    .map((e) => CharacterCard(character: e))
-              ]),
+              child: Wrap(
+                spacing: 16.0,
+                runSpacing: 16.0,
+                children: [
+                  ...listCharatersBloc.characters
+                      .map((e) => CharacterCard(character: e))
+                ],
+              ),
             ),
           ),
         ),
