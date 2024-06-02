@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_flutter/src/config/theme.dart';
+import 'package:rick_and_morty_flutter/src/config/colors.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/bloc/list_charaters_bloc.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/widget/character_card.dart';
 
@@ -24,7 +24,7 @@ class CharactersSection extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
-            color: CustomTheme().backgroundColor,
+            color: ColorsConfig().backgroundColor,
             borderRadius: BorderRadius.circular(4),
           ),
           child: SingleChildScrollView(

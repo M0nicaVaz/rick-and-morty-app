@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustomTheme {
+class ColorsConfig {
   Color brand000 = const Color(0xffeffff7);
   Color brand100 = const Color(0xffD3FCE9);
   Color brand200 = const Color(0xff27EA8F);

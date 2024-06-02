@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_flutter/src/config/theme.dart';
+import 'package:rick_and_morty_flutter/src/config/colors.dart';
 
 class FontConfig extends TextTheme {
   @override
