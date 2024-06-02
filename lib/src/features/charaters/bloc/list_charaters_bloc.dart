@@ -15,12 +15,13 @@ class ListCharatersBloc extends ChangeNotifier {
 
   _getCharacters() async {
     final response =
-        await ContainerRegistry.getCharactersUseCase.execute(page, name);
+        await ContainerRegistry.getCharactersUseCase.execute(page, name.trim());
     characters = response;
+
     notifyListeners();
   }
 
-  search(String value) {
+  searchByName(String value) {
     _debouncer.run(() {
       name = value;
       _getCharacters();
