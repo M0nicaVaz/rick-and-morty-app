@@ -17,7 +17,7 @@ class CharacterCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 205,
-      height: 256,
+      height: 290,
       child: Container(
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(4)),

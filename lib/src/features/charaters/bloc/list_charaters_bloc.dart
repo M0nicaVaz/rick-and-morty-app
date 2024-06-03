@@ -14,9 +14,16 @@ class ListCharatersBloc extends ChangeNotifier {
   }
 
   _getCharacters() async {
-    final response =
-        await ContainerRegistry.getCharactersUseCase.execute(page, name.trim());
-    characters = response;
+    try {
+      final response = await ContainerRegistry.getCharactersUseCase
+          .execute(page, name.trim());
+
+      if (response.length > 0) {
+        characters = response;
+      }
+    } catch (e) {
+      print(e);
+    }
 
     notifyListeners();
   }
