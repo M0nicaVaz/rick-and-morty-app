@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_flutter/src/core/container_registry.dart';
 import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
+import 'package:rick_and_morty_flutter/src/core/infra/dto/list_characters.dto.dart';
 import 'package:rick_and_morty_flutter/src/utils/debouncer.dart';
 
 class ListCharatersBloc extends ChangeNotifier {
   final Debouncer _debouncer = Debouncer(milliseconds: 500);
-  List<Character> characters = <Character>[];
+  List<Character>? characters = <Character>[];
   String name = "";
-  int page = 1;
+  int currentPage = 1;
+  int totalPages = 1;
   bool notFound = false;
 
   ListCharatersBloc() {
@@ -16,13 +18,15 @@ class ListCharatersBloc extends ChangeNotifier {
 
   _getCharacters() async {
     try {
-      final List<Character> response = await ContainerRegistry
+      final ListCharactersDto? response = await ContainerRegistry
           .getCharactersUseCase
-          .execute(page, name.trim());
+          .execute(currentPage, name.trim());
 
-      if (response.isNotEmpty) {
-        characters = response;
+      if (response?.results != null) {
+        characters = response?.results;
       }
+
+      totalPages = response?.pages ?? 1;
     } catch (e) {
       notFound = true;
       print(e);
@@ -34,12 +38,22 @@ class ListCharatersBloc extends ChangeNotifier {
   searchByName(String value) {
     _debouncer.run(() {
       name = value;
+      currentPage = 1;
       _getCharacters();
     });
   }
 
-  loadMore() {
-    page++;
-    _getCharacters();
+  previousPage() {
+    if (currentPage > 1) {
+      currentPage--;
+      _getCharacters();
+    }
+  }
+
+  nextPage() {
+    if (currentPage < totalPages) {
+      currentPage++;
+      _getCharacters();
+    }
   }
 }

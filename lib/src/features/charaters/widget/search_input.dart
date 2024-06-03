@@ -52,7 +52,7 @@ class SearchInput extends StatelessWidget {
             ),
             style: GoogleFonts.creepster(
               fontSize: 24,
-              color: Colors.white54,
+              color: Colors.cyan[400],
             ),
             onChanged: (String value) => listCharatersBloc.searchByName(value)),
       ],

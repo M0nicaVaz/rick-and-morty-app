@@ -36,7 +36,7 @@ class CharactersSection extends StatelessWidget {
                 runSpacing: 16.0,
                 children: listCharatersBloc.notFound
                     ? <Widget>[const Text("Personagem não encontrado")]
-                    : listCharatersBloc.characters
+                    : listCharatersBloc.characters!
                         .map((Character e) => CharacterCard(character: e))
                         .toList(),
               ),
