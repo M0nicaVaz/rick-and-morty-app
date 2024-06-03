@@ -3,9 +3,9 @@ import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
 
 class CharacterDetails extends StatelessWidget {
   const CharacterDetails({
-    super.key,
     required this.character,
     required this.context,
+    super.key,
   });
 
   final Character character;
@@ -21,7 +21,7 @@ class CharacterDetails extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                 color: Colors.white,
               ),
-          children: [
+          children: <InlineSpan>[
             TextSpan(text: character.status),
             const TextSpan(
               text: " | ",

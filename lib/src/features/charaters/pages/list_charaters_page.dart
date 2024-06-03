@@ -20,12 +20,13 @@ class _ListCharatersPageState extends State<ListCharatersPage> {
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
+        children: <Widget>[
           SearchInput(
-            listCharatersBloc: listCharatersBloc,
+            label: "Digite o nome de um personagem",
             hintText: "EX: RICK",
+            listCharatersBloc: listCharatersBloc,
           ),
-          SizedBox(
+          const SizedBox(
             height: 80,
           ),
           Center(

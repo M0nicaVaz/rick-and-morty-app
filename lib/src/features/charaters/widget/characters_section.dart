@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_flutter/src/config/colors.dart';
+import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/bloc/list_charaters_bloc.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/widget/character_card.dart';
 
 class CharactersSection extends StatelessWidget {
   const CharactersSection({
-    super.key,
     required this.listCharatersBloc,
+    super.key,
   });
 
   final ListCharatersBloc listCharatersBloc;
@@ -16,7 +17,7 @@ class CharactersSection extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: const LinearGradient(
-            colors: [Colors.lime, Colors.teal, Colors.cyan]),
+            colors: <Color>[Colors.lime, Colors.teal, Colors.cyan]),
         borderRadius: BorderRadius.circular(4),
       ),
       constraints: const BoxConstraints(maxWidth: 1280, maxHeight: 336),
@@ -33,10 +34,11 @@ class CharactersSection extends StatelessWidget {
               child: Wrap(
                 spacing: 16.0,
                 runSpacing: 16.0,
-                children: [
-                  ...listCharatersBloc.characters
-                      .map((e) => CharacterCard(character: e))
-                ],
+                children: listCharatersBloc.notFound
+                    ? <Widget>[const Text("Personagem não encontrado")]
+                    : listCharatersBloc.characters
+                        .map((Character e) => CharacterCard(character: e))
+                        .toList(),
               ),
             ),
           ),

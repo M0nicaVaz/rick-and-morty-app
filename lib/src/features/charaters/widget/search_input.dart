@@ -6,44 +6,56 @@ import 'package:rick_and_morty_flutter/src/features/charaters/bloc/list_charater
 
 class SearchInput extends StatelessWidget {
   const SearchInput({
-    super.key,
+    required this.label,
     required this.hintText,
     required this.listCharatersBloc,
+    super.key,
   });
 
   final ListCharatersBloc listCharatersBloc;
   final String hintText;
+  final String label;
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-        inputFormatters: [
-          FilteringTextInputFormatter.allow(
-            RegExp(r'[a-zA-Z\s]'),
-          ),
-        ],
-        textAlign: TextAlign.center,
-        decoration: InputDecoration(
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(
+    return Column(
+      children: <Widget>[
+        Text(label,
+            style: const TextStyle(
               color: Colors.lime,
-              width: 2,
+              fontSize: 18,
+            )),
+        const SizedBox(height: 8),
+        TextField(
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.allow(
+                RegExp(r'[a-zA-Z\s]'),
+              ),
+            ],
+            textAlign: TextAlign.center,
+            decoration: InputDecoration(
+              enabledBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Colors.lime,
+                  width: 2,
+                ),
+              ),
+              filled: true,
+              fillColor: ColorsConfig().backgroundLight,
+              contentPadding: const EdgeInsets.all(16),
+              constraints: const BoxConstraints(maxWidth: 448),
+              hintText: hintText,
+              hintStyle: const TextStyle(
+                color: Colors.white54,
+                fontSize: 24,
+              ),
             ),
-          ),
-          filled: true,
-          fillColor: ColorsConfig().backgroundLight,
-          contentPadding: const EdgeInsets.all(16),
-          constraints: const BoxConstraints(maxWidth: 448),
-          hintText: hintText,
-          hintStyle: const TextStyle(
-            color: Colors.white54,
-            fontSize: 24,
-          ),
-        ),
-        style: GoogleFonts.creepster(
-          fontSize: 24,
-          color: Colors.white54,
-        ),
-        onChanged: (value) => listCharatersBloc.searchByName(value));
+            style: GoogleFonts.creepster(
+              fontSize: 24,
+              color: Colors.white54,
+            ),
+            onChanged: (String value) => listCharatersBloc.searchByName(value)),
+      ],
+    );
   }
 }

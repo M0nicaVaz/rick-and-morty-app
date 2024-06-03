@@ -4,8 +4,8 @@ import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
 
 class CharacterName extends StatelessWidget {
   const CharacterName({
-    super.key,
     required this.character,
+    super.key,
   });
 
   final Character character;
@@ -17,7 +17,7 @@ class CharacterName extends StatelessWidget {
       child: Text(
         character.name,
         style: GoogleFonts.creepster(
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.w600,
             color: Colors.lime,

@@ -3,7 +3,7 @@ import 'package:rick_and_morty_flutter/src/core/infra/gateway/characters_http_ga
 import 'package:rick_and_morty_flutter/src/core/usecases/characters/get_characters.use_case.dart';
 
 class ContainerRegistry {
-  static final _http = API();
+  static final API _http = API();
 
   //---------------- gateways ----------------
   static final CharactersGateway _charactersGateway = CharactersGateway(_http);

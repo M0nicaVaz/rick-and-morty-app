@@ -9,8 +9,8 @@ class CharacterCard extends StatelessWidget {
   final Character character;
 
   const CharacterCard({
-    super.key,
     required this.character,
+    super.key,
   });
 
   @override
@@ -24,7 +24,7 @@ class CharacterCard extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
+            colors: <Color>[
               Color.fromARGB(98, 155, 220, 57),
               Color.fromARGB(133, 0, 150, 135),
               Color.fromARGB(123, 0, 187, 212),
@@ -35,7 +35,7 @@ class CharacterCard extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            children: <Widget>[
               CharacterImage(character: character),
               CharacterName(character: character),
               CharacterDetails(character: character, context: context),

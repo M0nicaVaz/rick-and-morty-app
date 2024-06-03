@@ -3,8 +3,8 @@ import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
 
 class CharacterImage extends StatelessWidget {
   const CharacterImage({
-    super.key,
     required this.character,
+    super.key,
   });
 
   final Character character;
