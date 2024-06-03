@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/widget/character_image.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/widget/character_name.dart';
-import 'package:rick_and_morty_flutter/src/features/charaters/widget/chracter_details.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/widget/character_details.dart';
 
 class CharacterCard extends StatelessWidget {
   final Character character;
