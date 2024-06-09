@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_flutter/src/features/charaters/bloc/list_charaters_bloc.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/providers/list_charaters_provider.dart';
 
 class Pagination extends StatelessWidget {
-  const Pagination({required this.listCharatersBloc, super.key});
-  final ListCharatersBloc listCharatersBloc;
+  const Pagination({required this.listCharatersProvider, super.key});
+  final ListCharatersProvider listCharatersProvider;
 
   @override
   Widget build(BuildContext context) {
-    String currentPage = listCharatersBloc.currentPage.toString();
-    String totalPages = listCharatersBloc.totalPages.toString();
+    String currentPage = listCharatersProvider.currentPage.toString();
+    String totalPages = listCharatersProvider.totalPages.toString();
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         TextButton(
           onPressed: () {
-            listCharatersBloc.previousPage();
+            listCharatersProvider.previousPage();
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
@@ -40,7 +40,7 @@ class Pagination extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            listCharatersBloc.nextPage();
+            listCharatersProvider.nextPage();
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,

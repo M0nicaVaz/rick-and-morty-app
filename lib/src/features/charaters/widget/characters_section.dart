@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:rick_and_morty_flutter/src/config/colors.dart';
 import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
-import 'package:rick_and_morty_flutter/src/features/charaters/bloc/list_charaters_bloc.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/providers/list_charaters_provider.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/widget/character_card.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/widget/list_not_found.dart';
 
 class CharactersSection extends StatelessWidget {
   const CharactersSection({
-    required this.listCharatersBloc,
+    required this.listCharatersProvider,
     super.key,
   });
 
-  final ListCharatersBloc listCharatersBloc;
+  final ListCharatersProvider listCharatersProvider;
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +38,9 @@ class CharactersSection extends StatelessWidget {
                   crossAxisAlignment: WrapCrossAlignment.center,
                   spacing: 16.0,
                   runSpacing: 16.0,
-                  children: listCharatersBloc.notFound
+                  children: listCharatersProvider.notFound
                       ? <Widget>[const ListNotFound()]
-                      : listCharatersBloc.characters!
+                      : listCharatersProvider.characters!
                           .map((Character e) => CharacterCard(character: e))
                           .toList(),
                 ),

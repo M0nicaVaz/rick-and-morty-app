@@ -4,7 +4,7 @@ import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
 import 'package:rick_and_morty_flutter/src/core/infra/dto/list_characters.dto.dart';
 import 'package:rick_and_morty_flutter/src/utils/debouncer.dart';
 
-class ListCharatersBloc extends ChangeNotifier {
+class ListCharatersProvider extends ChangeNotifier {
   final Debouncer _debouncer = Debouncer(milliseconds: 500);
   List<Character>? characters = <Character>[];
   String name = "";
@@ -12,7 +12,7 @@ class ListCharatersBloc extends ChangeNotifier {
   int totalPages = 1;
   bool notFound = false;
 
-  ListCharatersBloc() {
+  ListCharatersProvider() {
     _getCharacters();
   }
 

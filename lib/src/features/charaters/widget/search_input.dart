@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty_flutter/src/config/colors.dart';
-import 'package:rick_and_morty_flutter/src/features/charaters/bloc/list_charaters_bloc.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/providers/list_charaters_provider.dart';
 
 class SearchInput extends StatelessWidget {
   const SearchInput({
     required this.label,
     required this.hintText,
-    required this.listCharatersBloc,
+    required this.listCharatersProvider,
     super.key,
   });
 
-  final ListCharatersBloc listCharatersBloc;
+  final ListCharatersProvider listCharatersProvider;
   final String hintText;
   final String label;
 
@@ -57,7 +57,7 @@ class SearchInput extends StatelessWidget {
                 color: Colors.cyan[400],
               ),
               onChanged: (String value) =>
-                  listCharatersBloc.searchByName(value)),
+                  listCharatersProvider.searchByName(value)),
         ),
       ],
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rick_and_morty_flutter/src/features/charaters/bloc/list_charaters_bloc.dart';
+import 'package:rick_and_morty_flutter/src/features/charaters/providers/list_charaters_provider.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/widget/characters_section.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/widget/hero_section.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/widget/pagination.dart';
@@ -16,8 +16,8 @@ class ListCharatersPage extends StatefulWidget {
 class _ListCharatersPageState extends State<ListCharatersPage> {
   @override
   Widget build(BuildContext context) {
-    final ListCharatersBloc listCharatersBloc =
-        Provider.of<ListCharatersBloc>(context);
+    final ListCharatersProvider listCharatersProvider =
+        Provider.of<ListCharatersProvider>(context);
 
     return SingleChildScrollView(
       child: Padding(
@@ -32,19 +32,20 @@ class _ListCharatersPageState extends State<ListCharatersPage> {
             SearchInput(
               label: "Digite o nome de um personagem",
               hintText: "EX: RICK",
-              listCharatersBloc: listCharatersBloc,
+              listCharatersProvider: listCharatersProvider,
             ),
             const SizedBox(
               height: 80,
             ),
             Padding(
               padding: const EdgeInsets.only(right: 24, left: 24),
-              child: CharactersSection(listCharatersBloc: listCharatersBloc),
+              child: CharactersSection(
+                  listCharatersProvider: listCharatersProvider),
             ),
             const SizedBox(
               height: 24,
             ),
-            Pagination(listCharatersBloc: listCharatersBloc)
+            Pagination(listCharatersProvider: listCharatersProvider)
           ],
         ),
       ),
