@@ -39,6 +39,13 @@ class ListCharatersBloc extends ChangeNotifier {
     _debouncer.run(() {
       name = value;
       currentPage = 1;
+
+      if (value.isEmpty) {
+        notFound = false;
+        _getCharacters();
+        return;
+      }
+
       _getCharacters();
     });
   }
