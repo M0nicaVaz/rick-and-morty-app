@@ -13,25 +13,27 @@ class CharacterDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
-      child: RichText(
-        textAlign: TextAlign.center,
-        text: TextSpan(
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                color: Colors.white,
+      child: FittedBox(
+        child: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Colors.white,
+                ),
+            children: <InlineSpan>[
+              TextSpan(text: character.status),
+              const TextSpan(
+                text: " | ",
+                style: TextStyle(color: Colors.teal),
               ),
-          children: <InlineSpan>[
-            TextSpan(text: character.status),
-            const TextSpan(
-              text: " | ",
-              style: TextStyle(color: Colors.teal),
-            ),
-            TextSpan(text: character.species),
-            const TextSpan(
-              text: " | ",
-              style: TextStyle(color: Colors.teal),
-            ),
-            TextSpan(text: character.gender),
-          ],
+              TextSpan(text: character.species),
+              const TextSpan(
+                text: " | ",
+                style: TextStyle(color: Colors.teal),
+              ),
+              TextSpan(text: character.gender),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/gestures/events.dart';
 
 import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/widget/character_image.dart';
@@ -30,8 +31,10 @@ class _CharacterCardState extends State<CharacterCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => debugPrint(widget.character.name),
-      child: FocusableActionDetector(
-        onShowHoverHighlight: handleHover,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        onEnter: (PointerEnterEvent event) => handleHover(true),
+        onExit: (PointerExitEvent event) => handleHover(false),
         child: SizedBox(
           width: 205,
           height: 290,
