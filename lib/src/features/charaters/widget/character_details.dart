@@ -4,12 +4,10 @@ import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
 class CharacterDetails extends StatelessWidget {
   const CharacterDetails({
     required this.character,
-    required this.context,
     super.key,
   });
 
   final Character character;
-  final BuildContext context;
 
   @override
   Widget build(BuildContext context) {
