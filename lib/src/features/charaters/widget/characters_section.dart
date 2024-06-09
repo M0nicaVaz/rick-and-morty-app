@@ -15,18 +15,12 @@ class CharactersSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenSize = MediaQuery.sizeOf(context).width;
-
     return Container(
       height: 356,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
             colors: <Color>[Colors.lime, Colors.teal, Colors.cyan]),
         borderRadius: BorderRadius.circular(4),
-      ),
-      constraints: BoxConstraints(
-        minWidth: listCharatersBloc.notFound ? screenSize - 280 : 0,
-        maxWidth: 1280,
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
