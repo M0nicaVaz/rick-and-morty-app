@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:rick_and_morty_flutter/src/config/colors.dart';
 import 'package:rick_and_morty_flutter/src/core/entities/character.dart';
 import 'package:rick_and_morty_flutter/src/features/charaters/bloc/list_charaters_bloc.dart';

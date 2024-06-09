@@ -11,19 +11,23 @@ class AnimatedImage extends StatefulWidget {
 
 class _AnimatedImageState extends State<AnimatedImage>
     with TickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
-    duration: const Duration(milliseconds: 600),
-    vsync: this,
-  )..forward();
-  late final AnimationController _scaleController = AnimationController(
-    duration: const Duration(milliseconds: 600),
-    vsync: this,
-  )..forward();
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 600),
+      vsync: this,
+    );
+
+    _controller.forward();
+  }
 
   @override
   void dispose() {
-    _controller.dispose();
     super.dispose();
+    _controller.dispose();
   }
 
   @override
@@ -31,11 +35,11 @@ class _AnimatedImageState extends State<AnimatedImage>
     return AnimatedBuilder(
       builder: (BuildContext context, Widget? child) {
         return Transform.scale(
-          scale: _scaleController.value,
+          scale: _controller.value,
           child: child,
         );
       },
-      animation: _scaleController,
+      animation: _controller,
       child: AnimatedBuilder(
         animation: _controller,
         child: SizedBox(
