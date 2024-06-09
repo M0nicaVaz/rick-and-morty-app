@@ -26,35 +26,39 @@ class SearchInput extends StatelessWidget {
               fontSize: 18,
             )),
         const SizedBox(height: 8),
-        TextField(
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.allow(
-                RegExp(r'[a-zA-Z\s]'),
-              ),
-            ],
-            textAlign: TextAlign.center,
-            decoration: InputDecoration(
-              enabledBorder: const UnderlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.lime,
-                  width: 2,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: TextField(
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.allow(
+                  RegExp(r'[a-zA-Z\s]'),
+                ),
+              ],
+              textAlign: TextAlign.center,
+              decoration: InputDecoration(
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.lime,
+                    width: 2,
+                  ),
+                ),
+                filled: true,
+                fillColor: ColorsConfig().backgroundLight,
+                contentPadding: const EdgeInsets.all(16),
+                constraints: const BoxConstraints(maxWidth: 448),
+                hintText: hintText,
+                hintStyle: const TextStyle(
+                  color: Colors.white54,
+                  fontSize: 24,
                 ),
               ),
-              filled: true,
-              fillColor: ColorsConfig().backgroundLight,
-              contentPadding: const EdgeInsets.all(16),
-              constraints: const BoxConstraints(maxWidth: 448),
-              hintText: hintText,
-              hintStyle: const TextStyle(
-                color: Colors.white54,
+              style: GoogleFonts.creepster(
                 fontSize: 24,
+                color: Colors.cyan[400],
               ),
-            ),
-            style: GoogleFonts.creepster(
-              fontSize: 24,
-              color: Colors.cyan[400],
-            ),
-            onChanged: (String value) => listCharatersBloc.searchByName(value)),
+              onChanged: (String value) =>
+                  listCharatersBloc.searchByName(value)),
+        ),
       ],
     );
   }

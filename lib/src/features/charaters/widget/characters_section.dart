@@ -34,7 +34,7 @@ class CharactersSection extends StatelessWidget {
               padding: const EdgeInsets.all(24.0),
               child: Center(
                 child: Wrap(
-                  alignment: WrapAlignment.center,
+                  alignment: WrapAlignment.start,
                   crossAxisAlignment: WrapCrossAlignment.center,
                   spacing: 16.0,
                   runSpacing: 16.0,
